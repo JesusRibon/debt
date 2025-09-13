@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>{{ editing ? 'Editar Deuda' : 'Nueva Deuda' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <input type="number" formControlName="amount" placeholder="Monto" />
+    <textarea formControlName="description" placeholder="Descripción"></textarea>
+
+    <button type="submit" [disabled]="form.invalid">
+      {{ editing ? 'Actualizar' : 'Guardar' }}
+    </button>
+    <button type="button" (click)="router.navigate(['/debts'])">Cancelar</button>
+  </form>
+</div>

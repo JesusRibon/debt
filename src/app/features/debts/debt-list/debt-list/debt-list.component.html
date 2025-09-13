@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="header">
+    <h2>Mis Deudas</h2>
+    <button class="logout-btn" (click)="logout()" title="Cerrar sesión">
+      Logout
+    </button>
+  </div>
+
+  <div class="filters">
+    <button (click)="onFilterChange('all')" [class.active]="filter==='all'">Todas</button>
+    <button (click)="onFilterChange('pending')" [class.active]="filter==='pending'">Pendientes</button>
+    <button (click)="onFilterChange('paid')" [class.active]="filter==='paid'">Pagadas</button>
+  </div>
+
+  <button class="primary" (click)="newDebt()">+ Nueva Deuda</button>
+
+  <ul class="debt-list">
+    <li *ngFor="let d of debts" (click)="viewDebt(d.id)">
+      <div class="desc">{{ d.description || 'Sin descripción' }}</div>
+      <div class="meta">
+        <span [class.pending]="d.status==='pending'" [class.paid]="d.status==='paid'">{{ d.status }}</span>
+        <strong>{{ d.amount | currency:'USD' }}</strong>
+      </div>
+    </li>
+  </ul>
+</div>

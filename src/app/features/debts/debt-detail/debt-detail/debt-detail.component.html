@@ -1,0 +1,19 @@
+<div class="container" *ngIf="debt">
+  <h2>Detalle de Deuda</h2>
+
+  <p><strong>Monto:</strong> {{ debt.amount | currency:'USD' }}</p>
+  <p><strong>Descripción:</strong> {{ debt.description }}</p>
+  <p><strong>Estado:</strong>
+    <span [class.pending]="debt.status==='pending'" [class.paid]="debt.status==='paid'">
+      {{ debt.status }}
+    </span>
+  </p>
+  <p><strong>Fecha:</strong> {{ debt.created_at | date }}</p>
+
+  <div class="actions">
+    <button (click)="markAsPaid()" [disabled]="debt.status==='paid'">Marcar como Pagada</button>
+    <button (click)="editDebt()">Editar</button>
+    <button (click)="deleteDebt()">Eliminar</button>
+  </div>
+</div>
+
