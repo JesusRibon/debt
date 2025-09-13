@@ -1,0 +1,24 @@
+<div class="form-container">
+  <h2>Iniciar Sesión</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Email"
+      [class.invalid]="form.controls.email.invalid && form.controls.email.touched"
+    />
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Contraseña"
+      [class.invalid]="form.controls.password.invalid && form.controls.password.touched"
+    />
+
+    <button type="submit" [disabled]="form.invalid || loading">
+      {{ loading ? 'Ingresando...' : 'Ingresar' }}
+    </button>
+  </form>
+
+  <p>¿No tienes cuenta? <a routerLink="/register">Regístrate</a></p>
+</div>

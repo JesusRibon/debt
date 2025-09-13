@@ -1,0 +1,11 @@
+<div class="form-container">
+  <h2>Registro</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <input type="email" formControlName="email" placeholder="Email" />
+    <input type="password" formControlName="password" placeholder="Contraseña" />
+    <input type="password" formControlName="confirmPassword" placeholder="Confirmar contraseña" />
+    <button type="submit" [disabled]="form.invalid">Registrarme</button>
+  </form>
+  <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia Sesión</a></p>
+</div>
+
